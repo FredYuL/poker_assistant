@@ -69,7 +69,6 @@ set_community_cards(Cards) :-
 % =====================================
 %   PRESET OPPONENT RANGE (WEIGHTED)
 % =====================================
-/** You can modify this list for whichever combos & weights you like. */
 opponent_range_store([
     ( [card(spades,ace), card(hearts,king)],      5 ),
     ( [card(diamonds,queen), card(clubs,queen)],  2 ),
@@ -77,7 +76,6 @@ opponent_range_store([
     ( [card(spades,10), card(clubs,10)],          3 ),
     ( [card(diamonds,king), card(diamonds,jack)], 2 ),
     ( [card(spades,2), card(diamonds,7)],         1 )
-    % Add or remove combos / weights as desired
 ]).
 
 % Suit/Rank definitions
