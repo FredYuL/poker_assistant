@@ -57,11 +57,13 @@ clear_game :-
 % Example: ?- set_my_hand(hero, card(hearts,9), card(hearts,10)).
 set_my_hand(Player, Card1, Card2) :-
     retractall(my_hand(Player,_)),
+    writeln('Setting my hand to hearts 9 and hearts 10'),
     assertz(my_hand(Player, [Card1, Card2])).
 
 % Example: ?- set_community_cards([card(hearts,2), card(spades,king), card(diamonds,10)]).
 set_community_cards(Cards) :-
     retractall(community_cards(_)),
+     writeln('Setting community cards to spades 10, diamonds 10, clubs 10'),
     assertz(community_cards(Cards)).
 
 % =====================================
@@ -116,7 +118,9 @@ winning_probability_monte_carlo(Player, NumSamples, Probability) :-
     ( NumSamples > 0
       -> Probability is Wins / NumSamples
       ;  Probability = 0.0
-    ).
+    ),
+    writeln('Winning Probability:'),
+    writeln(Probability).
 
 % The main loop for random sampling
 do_monte_carlo(_, _, _, _, _, 0, 0).
@@ -298,7 +302,10 @@ suggest_action_kelly(Player, NumSamples, Pot, OppBet, Bankroll, Action, RaiseAmo
         Action = 'Raise',
         Tentative is KellyF * Bankroll,
         RaiseAmount is round(Tentative)
-    ).
+    ),
+     writeln('suggest_action_kelly called'),
+    writeln('Action: '), writeln(Action),
+    writeln('Amount: '), writeln(RaiseAmount).
 
 /** kelly_fraction(+PWin, +NetOdds, -Fraction)
     Kelly fraction formula: f* = (p*b - (1-p)) / b

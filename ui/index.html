@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1v1 德州扑克助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>1v1 德州扑克助手</h1>
+
+        <!-- 玩家手牌输入 -->
+        <div class="player-hand">
+            <h2>你的手牌</h2>
+            <div class="cards">
+                <div class="card" id="player-card-1" onclick="selectCard('player-card-1')">?</div>
+                <div class="card" id="player-card-2" onclick="selectCard('player-card-2')">?</div>
+            </div>
+        </div>
+
+        <!-- 公共牌输入 -->
+        <div class="board">
+            <h2>公共牌</h2>
+            <div class="cards">
+                <div class="card locked" id="board-card-1" onclick="selectCard('board-card-1')">?</div>
+                <div class="card locked" id="board-card-2" onclick="selectCard('board-card-2')">?</div>
+                <div class="card locked" id="board-card-3" onclick="selectCard('board-card-3')">?</div>
+                <div class="card locked" id="board-card-4" onclick="selectCard('board-card-4')">?</div>
+                <div class="card locked" id="board-card-5" onclick="selectCard('board-card-5')">?</div>
+            </div>
+        </div>
+
+        <!-- 选择框（花色 + 数字） -->
+        <div id="selection-popup" class="popup">
+            <h3>选择牌</h3>
+            <label for="suit">花色:</label>
+            <select id="suit">
+                <option value="">请选择</option>
+                <option value="♠️">♠️</option>
+                <option value="♥️">♥️</option>
+                <option value="♦️">♦️</option>
+                <option value="♣️">♣️</option>
+            </select>
+
+            <label for="rank">数字:</label>
+            <select id="rank">
+                <option value="">请选择</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="J">J</option>
+                <option value="Q">Q</option>
+                <option value="K">K</option>
+                <option value="A">A</option>
+            </select>
+
+            <button onclick="confirmSelection()">确认</button>
+        </div>
+
+        <!-- AI 计算结果 -->
+        <div class="ai-info">
+            <h2>AI 计算结果</h2>
+            <p>当前胜率: <span id="win-rate">?</span>%</p>
+            <p>建议行动: <span id="ai-action">等待中...</span></p>
+        </div>
+
+        <!-- 计算胜率按钮 -->
+        <div class="actions">
+            <button id="calculate-btn" onclick="sendToServer()">计算胜率</button>
+        </div>
+    </div>
+
+    <!-- 资金 & 下注信息 -->
+    <div class="betting-info">
+        <label for="pot">Pot (彩池):</label>
+        <input type="number" id="pot" value="0" min="0">
+
+        <label for="opponent-bet">Opponent Bet (对手下注):</label>
+        <input type="number" id="opponent-bet" value="0" min="0">
+
+        <label for="bankroll">Bankroll (资金):</label>
+        <input type="number" id="bankroll" value="1000" min="0">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.card {
+    width: 80px;
+    height: 120px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card.locked {
+    background-color: gray;
+    pointer-events: none; /* 禁止点击 */
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.popup h3 {
+    margin-top: 0;
+}
+
+.popup select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.popup button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#calculate-btn {
+    background-color: #27ae60; /* 绿色按钮 */
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#calculate-btn:hover {
+    background-color: #2ecc71; /* 浅绿色 */
+    transform: scale(1.05); /* 悬停时放大 */
+}
+
+#calculate-btn:active {
+    background-color: #1e8449; /* 深绿色 */
+    transform: scale(0.98); /* 点击时缩小 */
+}
+/* 🎯 让 Pot、Opponent Bet、Bankroll 显示在右侧 */
+.betting-info {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    color: white;
+    font-size: 16px;
+    width: 180px;
+}
+
+/* 🎯 让输入框更美观 */
+.betting-info label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.betting-info input {
+    width: 100%;
+    padding: 6px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background: #f5f5f5;
+}
+
+/* 🎯 美化上下箭头 */
+.betting-info input[type="number"] {
+    -moz-appearance: textfield; /* Firefox 隐藏默认箭头 */
+}
+
+.betting-info input[type="number"]::-webkit-inner-spin-button,
+.betting-info input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: inner-spin-button; /* 让上下箭头可见 */
+    opacity: 1;
+}
